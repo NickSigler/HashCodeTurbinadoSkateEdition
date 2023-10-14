@@ -1,5 +1,9 @@
 package Hash;
 
+import Objeto.Aluno;
+
+import java.util.ArrayList;
+
 public class Main
 {
     public static void main(String[] args)
@@ -7,5 +11,12 @@ public class Main
         Hash hash = new Hash(10);
         System.out.println(hash.getVetor(0));
         hash.insert("Nicolas", 2);
+
+
+
+
+
+
+
     }
 }

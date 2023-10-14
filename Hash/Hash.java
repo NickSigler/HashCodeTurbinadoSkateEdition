@@ -10,30 +10,40 @@ public class Hash
     {
         this.vetor = new Aluno[tamanho];
     }
-    public void insert(String nome, int nota)
+    public void inserir(String nome, int nota)
     {
         Aluno aluno = new Aluno(nome, nota);
-        int posicao = funcaoHash(aluno);
+        int posicao = funcaoHash(aluno.getNota());
         vetor[posicao] = aluno;
     }
-    public int funcaoHash(Aluno aluno)
+    public int funcaoHash(int nota)
     {
-        return (aluno.getNota() % tamanho);
+        return (nota % tamanho);
     }
     //public float conf
-    //
-    //
-    //
     // erirCarga(int chave)
     //{
     //}
-    public boolean isEmpty()
+    public boolean estaCheio()
     {
         if(fatorDeCarga == 0)
         {
             return true;
         }
         return false;
+    }
+    public Aluno deletar(int nota)
+    {
+        int poicao = funcaoHash(nota);
+        Aluno aluno = vetor[poicao];
+        vetor[funcaoHash(nota)] = null;
+        return aluno;
+    }
+
+    public Aluno buscar(int chave)
+    {
+        int posicao = funcaoHash(chave);
+        return vetor[posicao];
     }
 
 
