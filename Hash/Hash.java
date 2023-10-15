@@ -20,10 +20,6 @@ public class Hash
     {
         return (nota % tamanho);
     }
-    //public float conf
-    // erirCarga(int chave)
-    //{
-    //}
     public boolean estaCheio()
     {
         if(fatorDeCarga == 0)
@@ -39,7 +35,6 @@ public class Hash
         vetor[funcaoHash(nota)] = null;
         return aluno;
     }
-
     public Aluno buscar(int chave)
     {
         int posicao = funcaoHash(chave);
