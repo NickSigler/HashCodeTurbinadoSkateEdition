@@ -14,5 +14,7 @@ public class Main
         lista.insert("Olá1");
         lista.insert("Olá2");
         lista.insert("Ola3");
+
+        System.out.println(lista.remove("Olá1"));
     }
 }

@@ -25,6 +25,13 @@ public class No<T>
     {
         this.noProximo = noProximo;
     }
-
+    public T getData()
+    {
+        return this.data;
+    }
+    public void setData(T data)
+    {
+        this.data = data;
+    }
 
 }
