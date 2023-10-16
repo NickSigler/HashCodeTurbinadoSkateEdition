@@ -2,11 +2,15 @@ package Hash;
 
 import Objeto.Aluno;
 import lista.Lista;
+import lista.No;
+
+import java.util.ArrayList;
 
 public class HashLista
 {
     private int tamanho = 0;
     private Lista vetor[];
+    private float elementos = 0;
     private float fatorDeCarga;
 
     //Construtor da Hash, aqui é onde ela é inicializada, chamada, construida.
@@ -36,6 +40,7 @@ public class HashLista
             vetor[posicao] = lista;
             vetor[posicao].insert(aluno);
         }
+        elementos++;
     }
 
     //Função Hash para descobrir qual chave o dado será inserido.
@@ -51,31 +56,80 @@ public class HashLista
         }
         return false;
     }
-    public Lista deletar(int nota)
+
+
+    public void deletar(int nota, String nome)
     {
         int poicao = funcaoHash(nota);
         Lista aluno = vetor[poicao];
-        vetor[funcaoHash(nota)] = null;
-        return aluno;
+
+        vetor[poicao].remove(vetor[poicao].buscar(nome,nota));
+
+        imprimirTabela();
+
     }
-    public Object buscar(int nota, String nome)
+
+    //Ele busca atraves da nota e do nome do alunona lista e retorna os valores do Nó
+    public String buscar(int nota, String nome)
     {
         int posicao = funcaoHash(nota);
 
         if(vetor[posicao] instanceof Lista)
         {
+            No aluno = vetor[posicao].buscar(nome, nota);
+            return String.format("Aluno %s com nota %d encontrado! ", aluno.getData().getNome(), aluno.getData().getNota());
 
         }
-        return vetor[posicao];
+        return String.format("Aluno não encontrado! ");
     }
     public Object getVetor(int posicao)
     {
         return this.vetor[posicao];
     }
-    public String imprimirTabela()
-    {
-        return "Salve";
+
+    public void imprimirTabela() {
+        for (int i = 0; i < tamanho; i++) {
+            if (vetor[i] != null) {
+                System.out.print(i + " {");
+                Lista lista = vetor[i];
+                No atual = lista.getNoInicial();
+                while (atual != null) {
+                    Aluno aluno = atual.getData();
+                    System.out.print("Nome: " + aluno.getNome() + ", Nota: " + aluno.getNota());
+                    if (atual.getNoProximo() != null) {
+                        System.out.print(", ");
+                    }
+                    atual = atual.getNoProximo();
+                }
+                System.out.println("}");
+            }
+        }
     }
+    public void expandirTamanho()
+    {
+        ArrayList<Lista> guardarArray = new ArrayList<>();
+
+        if(elementos >= 0.8)
+        {
+            for(int i = 0; i < tamanho; i++)
+            {
+                if(vetor[i] != null)
+                {
+                    guardarArray.add(vetor[i]);
+                }
+            }
+
+            this.vetor = new Lista[tamanho * 2];
+
+            for(Lista alunos: guardarArray)
+            {
+
+                
+
+            }
+        }
+    }
+
 
 
 }

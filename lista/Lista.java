@@ -49,17 +49,24 @@ public class Lista<T>
     }
 
     //
-    public T remove(T data)
+    public T remove(No data)
     {
         No noAtual = noInicial;
         while(true)
         {
             //Verifica se o dado do nó atual é o mesmo dado do nó que estamos procurando para remover
-            if(noAtual.getData() == data)
+            if(noAtual.getData().getNota() == data.getData().getNota() & noAtual.getData().getNome() == data.getData()
+                    .getNome())
             {
 
                 //Ele rearranja a ordem dos nós para que não ocorra deles perderem a conexão
-                noAtual.getNoProximo().setNoAnterior(noAtual.getNoAnterior());
+                if(noAtual.getNoProximo() == null)
+                {
+                }
+                else
+                {
+                    noAtual.getNoProximo().setNoAnterior(noAtual.getNoAnterior());
+                }
                 noAtual.getNoAnterior().setNoProximo(noAtual.getNoProximo());
                 return (T) noAtual.getData();
             }
@@ -72,11 +79,12 @@ public class Lista<T>
         }
 
     }
-    public No buscar(Aluno valorProcurado) {
+    public No buscar(String nome, int nota) {
         No noAtual = noInicial;
 
         while (noAtual != null) {
-            if (noAtual.getData().equals(valorProcurado)) {
+            if (noAtual.getData().getNota() == nota & noAtual.getData().getNome() == nome)
+            {
                 return noAtual;
             }
             noAtual = noAtual.getNoProximo();
@@ -84,6 +92,11 @@ public class Lista<T>
 
         // Retorna null se o elemento não for encontrado na lista
         return null;
+    }
+
+    public No getNoInicial()
+    {
+        return this.noInicial;
     }
 
 

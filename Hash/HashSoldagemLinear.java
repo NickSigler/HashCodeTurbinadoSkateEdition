@@ -111,4 +111,12 @@ public class HashSoldagemLinear
     {
         return this.vetor[posicao];
     }
+    public void imprimirTabela() {
+        for (int i = 0; i < tamanho; i++) {
+            if (vetor[i] != null) {
+                System.out.println(i + "{" + "Nome: " + vetor[i].getNome() + ", Nota: " + vetor[i].getNota() + "}");
+            }
+        }
+    }
+
 }

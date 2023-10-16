@@ -2,7 +2,7 @@ package Hash;
 
 public class InsercaoComparador {
     public static void main(String[] args) {
-        int tamanhoDaHash = 10000; // Tamanho da hash
+        int tamanhoDaHash = 10000;
         HashLista hashLista = new HashLista(tamanhoDaHash);
         HashLista hashListaAlternativa = new HashLista(tamanhoDaHash);
 
@@ -14,9 +14,8 @@ public class InsercaoComparador {
             hashLista.inserir(nome, nota);
         }
         long fimOriginal = System.nanoTime();
-        long tempoOriginal = (fimOriginal - inicioOriginal) / 1000000; // Tempo em milissegundos
-
-        // Medindo o tempo de execução da função inserir da HashLista alternativa
+        long tempoOriginal = (fimOriginal - inicioOriginal) / 1000000;
+        //HashLista
         long inicioAlternativa = System.nanoTime();
         for (int i = 0; i < tamanhoDaHash; i++) {
             String nome = "Aluno" + i;
@@ -24,12 +23,12 @@ public class InsercaoComparador {
             hashListaAlternativa.inserir(nome, nota);
         }
         long fimAlternativa = System.nanoTime();
-        long tempoAlternativa = (fimAlternativa - inicioAlternativa) / 1000000; // Tempo em milissegundos
+        long tempoAlternativa = (fimAlternativa - inicioAlternativa) / 1000000;
 
         System.out.println("Tempo da função inserir da HashLista original: " + tempoOriginal + " ms");
         System.out.println("Tempo da função inserir da HashLista alternativa: " + tempoAlternativa + " ms");
 
-        // Você pode comparar os tempos e tomar decisões com base nos resultados.
+
     }
 }
 
