@@ -52,7 +52,11 @@ public class HashSoldagemLinear
         int analisarPosicao = posicao;
         while(true)
         {
-            if(vetor[posicao].getNome() == nome & vetor[posicao].getNota() == nota)
+            if(vetor[analisarPosicao] == null)
+            {
+                return String.format("alunonão encontrado!");
+            }
+            else if(vetor[analisarPosicao].getNome() == nome & vetor[posicao].getNota() == nota)
             {
                 vetor[posicao] = null;
                 return String.format("Aluno: %s com nota: %d encontrado",nome, nota);
