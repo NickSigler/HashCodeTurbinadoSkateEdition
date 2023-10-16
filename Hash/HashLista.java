@@ -58,29 +58,24 @@ public class HashLista
         vetor[funcaoHash(nota)] = null;
         return aluno;
     }
-    public Lista buscar(int chave)
+    public Object buscar(int nota, String nome)
     {
-        int posicao = funcaoHash(chave);
+        int posicao = funcaoHash(nota);
+
+        if(vetor[posicao] instanceof Lista)
+        {
+
+        }
         return vetor[posicao];
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    public Lista getVetor(int posicao)
+    public Object getVetor(int posicao)
     {
         return this.vetor[posicao];
     }
-
-
+    public String imprimirTabela()
+    {
+        return "Salve";
+    }
 
 
 }

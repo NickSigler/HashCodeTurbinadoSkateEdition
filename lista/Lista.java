@@ -1,5 +1,7 @@
 package lista;
 
+import Objeto.Aluno;
+
 public class Lista<T>
 {
     private No noInicial = null;
@@ -8,16 +10,17 @@ public class Lista<T>
     public Lista(){}
 
     //Inserindo o elemento dentro da Lista
-    public No insert(T data)
+    public No insert(Aluno data)
     {
-        No no = new No<T>(data);
+        No no = new No(data);
 
         //Se noInicial for zero, ele será inserido aqui
         if(noInicial == null)
         {
             noInicial = no;
             //Inserindo um elemento vazio no anterior para evitar que algum no seja inserido aqui
-            no.setNoAnterior(new No<>("vazio"));
+            Aluno alunoVazio = new Aluno("Vazio", -1);
+            no.setNoAnterior(new No(alunoVazio));
             return no;
         }
 
@@ -69,7 +72,21 @@ public class Lista<T>
         }
 
     }
-    
+    public No buscar(Aluno valorProcurado) {
+        No noAtual = noInicial;
+
+        while (noAtual != null) {
+            if (noAtual.getData().equals(valorProcurado)) {
+                return noAtual;
+            }
+            noAtual = noAtual.getNoProximo();
+        }
+
+        // Retorna null se o elemento não for encontrado na lista
+        return null;
+    }
+
+
 
 
 

@@ -1,11 +1,13 @@
 package lista;
 
-public class No<T>
+import Objeto.Aluno;
+
+public class No
 {
     private No noAnterior;
     private No noProximo;
-    private T data;
-    public No(T data)
+    private Aluno data;
+    public No(Aluno data)
     {
         this.data = data;
     }
@@ -25,11 +27,11 @@ public class No<T>
     {
         this.noProximo = noProximo;
     }
-    public T getData()
+    public Aluno getData()
     {
         return this.data;
     }
-    public void setData(T data)
+    public void setData(Aluno data)
     {
         this.data = data;
     }

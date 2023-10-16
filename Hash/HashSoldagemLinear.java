@@ -1,11 +1,15 @@
 package Hash;
 
 import Objeto.Aluno;
+
+import java.util.ArrayList;
+
 public class HashSoldagemLinear
 {
     private int tamanho = 0;
     private Aluno vetor[];
     private float fatorDeCarga;
+    private float elementos = 0;
     public HashSoldagemLinear(int tamanho)
     {
         this.vetor = new Aluno[tamanho];
@@ -25,6 +29,7 @@ public class HashSoldagemLinear
             else
             {
                 vetor[analisarPosicao] = aluno;
+                elementos++;
                 break;
             }
         }
@@ -77,6 +82,28 @@ public class HashSoldagemLinear
             else
             {
                 analisarPosicao = funcaoHash(nota + 2);
+            }
+        }
+    }
+    public void expandirTamanho()
+    {
+        ArrayList<Aluno> guardarArray = new ArrayList<>();
+
+        if(elementos >= 0.8)
+        {
+            for(int i = 0; i < tamanho; i++)
+            {
+                if(vetor[i] != null)
+                {
+                    guardarArray.add(vetor[i]);
+                }
+            }
+
+            this.vetor = new Aluno[tamanho * 2];
+
+            for(Aluno alunos: guardarArray)
+            {
+                inserir(alunos.getNome(), alunos.getNota());
             }
         }
     }
