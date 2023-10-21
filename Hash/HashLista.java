@@ -74,10 +74,14 @@ public class HashLista
     {
         int posicao = funcaoHash(nota);
 
-        if(vetor[posicao] instanceof Lista)
+        if(vetor[posicao] == null)
+        {
+            return String.format("Aluno não encontrado!");
+        }
+        else if(vetor[posicao] instanceof Lista)
         {
             No aluno = vetor[posicao].buscar(nome, nota);
-            return String.format("Aluno %s com nota %d encontrado! ", aluno.getData().getNome(), aluno.getData().getNota());
+            return String.format("Aluno  com nota  encontrado! ");
 
         }
         return String.format("Aluno não encontrado! ");
